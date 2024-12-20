@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+    <h1>Rock Paper Scissors Game</h1>
+    <p>Choose to Play:</p>
+    <button id="rock">🧱 Rock</button>
+    <button id="paper">📃 Paper</button>
+    <button id="scissor">✂ Scissors</button>
+    <p>Result:</p>
+    <p id="text"></p>
+
+    <script>
+        let rock = document.querySelector("#rock");
+        let paper = document.querySelector("#paper");
+        let scissor = document.querySelector("#scissor");
+        let resultText = document.querySelector("#text");
+
+        const bop = ["rock", "paper", "scissors"];
+
+        function getbc() {
+            return bop[Math.floor(Math.random() * 3)];
+        }
+
+        function dw(pc, bc) {
+            if (pc === bc) {
+                return "It's a draw!";
+            } else if (
+                (pc === "rock" && bc === "scissors") ||
+                (pc === "paper" && bc === "rock") ||
+                (pc === "scissors" && bc === "paper")
+            ) {
+                return "You win!";
+            } else {
+                return "You lose!";
+            }
+        }
+
+        rock.addEventListener('click', () => {
+            let bc = getbc();
+            resultText.innerHTML = `You chose rock, Bot chose ${bc}. ${dw("rock", bc)}`;
+        });
+
+        paper.addEventListener('click', () => {
+            let bc = getbc();
+            resultText.innerHTML = `You chose paper, Bot chose ${bc}. ${dw("paper", bc)}`;
+        });
+
+        scissor.addEventListener('click', () => {
+            let bc = getbc();
+            resultText.innerHTML = `You chose scissor, Bot chose ${bc}. ${dw("scissors", bc)}`;
+        });
+    </script>
+</body>
+</html>
